@@ -21,7 +21,7 @@
       <div class="widget">
         <div class="slider"></div>
       </div>
-      <div class="value">0</div>
+      <div class="value-test">0</div>
     </div>
 
     <p>
@@ -41,7 +41,7 @@ abort events triggered:  <span id="abort-events">0</span></code></pre>
     <script type="text/javascript" src="../../vendor/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="../../vendor/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="../../vendor/underscore-1.3.1.js"></script>
-    <script type="text/javascript" src="../../jquery.quinn.js"></script>
+    <script type="text/javascript" src="../../superslide-lib.js"></script>
 
     <script lang="text/javascript">
       var dragEvents = 0, changeEvents = 0, abortEvents = 0, quinn;
@@ -50,16 +50,19 @@ abort events triggered:  <span id="abort-events">0</span></code></pre>
         value: [ 25, 75 ],
 
         drag: function (newValue) {
-          $('.value').text(newValue.join(' - '));
+          console.log("drag", newValue)
+          $('.value-test').text(newValue.map(function(x){return x.value}).join(' - '));
           $('#drag-events').text(++dragEvents);
         },
 
         change: function (newValue) {
+          console.log("change", newValue)
           $('#change-events').text(++changeEvents);
         },
 
         setup: function (newValue) {
-          $('.value').text(newValue.join(' - '));
+          console.log("setup", newValue)
+          $('.value-test').text(newValue.map(function(x){return x.value}).join(' - '));
         },
 
         abort: function (newValue) {
