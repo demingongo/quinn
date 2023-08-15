@@ -982,6 +982,7 @@
      * they accurately represent the value of the slider.
      */
     Quinn.Renderer.prototype.redraw = function (animate) {
+        
         var self = this;
 
         if (animate !== false) {
